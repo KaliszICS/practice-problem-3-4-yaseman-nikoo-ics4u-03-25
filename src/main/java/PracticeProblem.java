@@ -1,27 +1,24 @@
+import java.util.ArrayList;
 public class PracticeProblem {
 
 	public static void main(String args[]) {
 
-	}
 
-	public static void q1() {
-		//Write question 1 code here
 	}
-
-	public static void q2() {
-		//Write question 2 code here
-	}
-
-	public static void q3() {
-		//Write question 3 code here
-	}
-
-	public static void q4() {
-		//Write question 4 code here
-	}
-
-	public static void q5() {
-		//Write question 5 code here
+	public static ArrayList<Integer> recaman(int n){
+		ArrayList<Integer> sequence = new ArrayList<Integer>();
+		if (n<2){
+			return sequence;
+		}
+		int x= recaman(n-1).get(n-1)-n;
+		int y= recaman(n-1).get(n-1)+n;
+		if (x>0 && !sequence.contains(x)){
+		 sequence.add(x);
+		}
+		else{
+			sequence.add(y);
+		}
+		return sequence;
 	}
 
 }
