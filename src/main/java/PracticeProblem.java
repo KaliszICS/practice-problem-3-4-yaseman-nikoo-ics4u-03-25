@@ -5,20 +5,38 @@ public class PracticeProblem {
 
 
 	}
-	public static ArrayList<Integer> recaman(int n){
+	public static int[] recaman(int n){
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
-		if (n<2){
-			return sequence;
+		
+		if(n<1){
+			return new int[]{};
 		}
-		int x= recaman(n-1).get(n-1)-n;
-		int y= recaman(n-1).get(n-1)+n;
+		
+		recamanHelper(sequence, n);
+		int[] arr= new int[n];
+		for(int i=0; i<sequence.size();i++){
+			arr[i]= sequence.get(i);
+		}
+		return arr;
+
+		
+	}
+	public static void recamanHelper(ArrayList<Integer> sequence, int n){
+		if (n==1){
+			sequence.add(1);
+			return;
+		}
+		recamanHelper(sequence, n-1);
+		int x= sequence.get(n-2)-n;
+		int y= sequence.get(n-2)+n;
 		if (x>0 && !sequence.contains(x)){
 		 sequence.add(x);
 		}
 		else{
 			sequence.add(y);
 		}
-		return sequence;
+		
 	}
-
 }
+
+
